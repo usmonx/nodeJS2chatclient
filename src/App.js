@@ -1,23 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import { useInfoContext } from './context/Context';
+import { Auth } from './pages/Auth/Auth';
+import { Chat } from './pages/Chat/Chat';
 
 function App() {
+  const {currentUser} = useInfoContext()
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {
+        currentUser ? <Chat /> : <Auth />
+      }
+
+      <div className='blur'></div>
+      <div className='blur'></div>
     </div>
   );
 }
